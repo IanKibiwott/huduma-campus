@@ -1,0 +1,475 @@
+/* ============================================================================
+   Huduma Campus — Clean Responsive Stylesheet (assets/style.css)
+   ============================================================================ */
+
+/* 1. Light Theme Variables (Default) */
+:root {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --surface-alt: #f8fafc;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #cbd5e1;
+    --border-light: #e2e8f0;
+    --primary: #0f766e;
+    --primary-hover: #115e59;
+    --nav-bg: #134e4a;
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+    --secondary: #475569;
+    --secondary-hover: #334155;
+}
+
+/* 2. Dark Theme Variables (Applied when $_COOKIE['hc_theme'] === 'dark') */
+body.theme-dark {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface-alt: #162032;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #334155;
+    --border-light: #293548;
+    --primary: #14b8a6;
+    --primary-hover: #0d9488;
+    --nav-bg: #09101d;
+    --secondary: #334155;
+    --secondary-hover: #475569;
+}
+
+/* 3. Reset & Base Typography */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* 4. Site Header */
+.site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-light);
+    padding: 0.85rem 0;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text);
+    text-decoration: none !important;
+}
+
+.brand-title {
+    display: block;
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.brand-sub {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.user-pill {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.84rem;
+}
+
+/* 5. Primary Navigation Bar */
+.site-nav {
+    background: var(--nav-bg);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+}
+
+.site-nav a {
+    color: #e2e8f0;
+    text-decoration: none !important;
+    padding: 0.68rem 0.95rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.site-nav a.nav-logout {
+    margin-left: auto;
+    background: rgba(220, 38, 38, 0.25);
+}
+
+.site-nav a.nav-logout:hover {
+    background: var(--danger);
+}
+
+/* 6. Main Content, Cards & Grids */
+.main-content {
+    flex: 1;
+    padding: 1.75rem 1.25rem 2.5rem;
+}
+
+.page-header {
+    margin-bottom: 1.4rem;
+}
+
+.page-header h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 1.4rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card h2,
+.card h3 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+}
+
+.auth-card {
+    max-width: 450px;
+    margin: 1.5rem auto;
+    padding: 1.75rem;
+    border-top: 4px solid var(--primary);
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 1.25rem;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    padding: 1.1rem 1.2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.2rem 0;
+}
+
+/* 7. Forms, Inputs & Buttons */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.35rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.58rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.92rem;
+    font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.2);
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.checkbox-row input {
+    width: auto;
+}
+
+/* Filter Toolbar & Inline Controls */
+.inline-form {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+/* Keep table cell status dropdown + Update button on one clean line */
+.data-table td .inline-form {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff !important;
+    border: none;
+    padding: 0.58rem 1.05rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none !important;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-hover);
+}
+
+.btn-danger {
+    background: var(--danger);
+}
+
+.btn-danger:hover {
+    background: var(--danger-hover);
+}
+
+.btn-sm {
+    padding: 0.32rem 0.68rem;
+    font-size: 0.82rem;
+}
+
+/* 8. Alerts & Status Badges */
+.alert {
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.alert ul {
+    margin-left: 1.2rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-open {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-progress {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.badge-resolved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* 9. Data Tables, Pagination & Activity Log Box */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.72rem 0.85rem;
+    border-bottom: 1px solid var(--border-light);
+    text-align: left;
+    vertical-align: top;
+}
+
+.data-table th {
+    background: var(--surface-alt);
+    font-weight: 600;
+    font-size: 0.84rem;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+
+.data-table tbody tr:hover {
+    background: var(--surface-alt);
+}
+
+.pagination {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 1.1rem;
+    flex-wrap: wrap;
+}
+
+.pagination a {
+    padding: 0.38rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.86rem;
+    text-decoration: none !important;
+}
+
+.pagination a.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+
+.log-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem 0.9rem;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.82rem;
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.log-box li {
+    list-style: none;
+    padding: 0.35rem 0;
+    border-bottom: 1px dashed var(--border);
+    word-break: break-word;
+}
+
+.log-box li:last-child {
+    border-bottom: none;
+}
+
+/* 10. Footer & Mobile Layout */
+.site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border-light);
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.84rem;
+}
+
+@media (max-width: 640px) {
+    .site-nav a.nav-logout {
+        margin-left: 0;
+    }
+}
